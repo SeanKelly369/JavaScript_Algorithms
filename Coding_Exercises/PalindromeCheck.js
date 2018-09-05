@@ -10,13 +10,13 @@ function PalindromeCheck(str) {
   let right = str.length -1;
   let middle = Math.floor(str.length / 2);
 
-  for(let i = 0; i < middle + 1; i++) {
+  for(let i = 0; i < middle; i++) {
 
     if(str[left] === str[right]) {
       left++;
-      right--;
+      right--;          
     }
-    // The iteration has reach the middle with matches on both sides
+    // The iteration has reached the middle of the string with matches on both sides
     if(left === middle) {
       return true;
       break;
