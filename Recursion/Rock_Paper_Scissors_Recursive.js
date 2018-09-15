@@ -11,16 +11,16 @@ function rps(rounds) {
   // Array of combination possibilities
   let mix = ['r', 'p', 's', 'x'];
 
-  function play(playedSoFar, rounds) {
+  function play(played, rounds) {
 
     // End the play function when the number of rounds are complete
     if(rounds === 0) {
-      results.push(playedSoFar);
+      results.push(played);
       return;
     }
     // Run through the total number of possible combinations until the number of rounds reaches 0.  Combinations get recursively placed on a call stack until no new combinations remain.
     for(let i in mix) {
-      play(playedSoFar + mix[i], rounds - 1);
+      play(played + mix[i], rounds - 1);
     }
   }
 
