@@ -2,7 +2,7 @@
 //output = ["re", "rp", "rs", "pr", "pp", "ps", "sr", "sp", "ss"]
 
 // Test input
-let maple = rps(2);
+let maple = rps(3);
 maple;
 
 function rps(rounds) {
@@ -10,8 +10,8 @@ function rps(rounds) {
   let results = [];
 
   // Array of combination possibilities
-  let possibilities = ['r', 'p', 's', 'e'];
-
+  let possibilities = ['r', 'p', 's', 'x'];
+  let possLen = possibilities.length;
 
   function play(playedSoFar, rounds) {
 
@@ -20,8 +20,8 @@ function rps(rounds) {
       results.push(playedSoFar);
       return;
     }
-    // Run through the total number of possible combinations until the number of rounds reaches 0
-    for(let i = 0; i < possibilities.length; i++) {
+    // Run through the total number of possible combinations until the number of rounds reaches 0.  Combinations get recursively placed on a call stack until no new combinations remain.
+    for(let i = 0; i < possLen; i++) {
       play(playedSoFar + possibilities[i], rounds - 1);
     }
   }
