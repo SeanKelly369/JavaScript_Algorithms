@@ -9,7 +9,7 @@ function rps(rounds) {
   let results = [];
 
   // Array of combination possibilities
-  let possibilities = ['r', 'p', 's', 'x'];
+  let mix = ['r', 'p', 's', 'x'];
 
   function play(playedSoFar, rounds) {
 
@@ -19,12 +19,11 @@ function rps(rounds) {
       return;
     }
     // Run through the total number of possible combinations until the number of rounds reaches 0.  Combinations get recursively placed on a call stack until no new combinations remain.
-    for(let i in possibilities) {
-      play(playedSoFar + possibilities[i], rounds - 1);
+    for(let i in mix) {
+      play(playedSoFar + mix[i], rounds - 1);
     }
   }
 
   play('', rounds);
   return results;
 }
-
