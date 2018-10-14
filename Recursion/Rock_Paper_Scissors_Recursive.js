@@ -2,28 +2,27 @@
 //output = ["re", "rp", "rs", "pr", "pp", "ps", "sr", "sp", "ss"]
 
 // Test input
-rps(3);
+rps(2);
 
-function rps(rounds) {
+function rps(round) {
   // array variable to store result
-  let results = [];
+  const results = [];
 
   // Array of combination possibilities
-  let mix = ['r', 'p', 's', 'x'];
+  const mix = ['r', 'p', 's', 'x'];
 
-  function play(played, rounds) {
+  play = (played, round) => {
 
     // End the play function when the number of rounds are complete
-    if(rounds === 0) {
-      results.push(played);
-      return;
-    }
+    if(round === 0) return results.unshift(played);
+
     // Run through the total number of possible combinations until the number of rounds reaches 0.  Combinations get recursively placed on a call stack until no new combinations remain.
     for(let i in mix) {
-      play(played + mix[i], rounds - 1);
+      play(played + mix[i], round - 1);
     }
   }
 
-  play('', rounds);
+  play('', round);
   return results;
 }
+
