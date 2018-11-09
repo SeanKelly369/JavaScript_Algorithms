@@ -1,12 +1,12 @@
 function growingPlant(upSpeed, downSpeed, desiredHeight) {
   let days = 0;
-  let totalHeight = 0;
+  let currentHeight = 0;
 
-  while(totalHeight < desiredHeight) {
+  while(currentHeight < desiredHeight) {
     days++;
-    totalHeight += upSpeed;
-    if(totalHeight < desiredHeight) {
-      totalHeight -= downSpeed;
+    currentHeight += upSpeed;
+    if(currentHeight < desiredHeight) {
+      currentHeight -= downSpeed;
     }
   }
   return days;
