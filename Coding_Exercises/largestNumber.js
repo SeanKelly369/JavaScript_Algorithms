@@ -1,5 +1,5 @@
 function largestNumber(n) {
-  let word = '9'.repeat(n);
+  const word = '9'.repeat(n);
   return word;
 }
 
