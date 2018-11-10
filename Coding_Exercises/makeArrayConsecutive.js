@@ -7,7 +7,7 @@ function makeArrayConsecutive2(statues) {
   let max = sortedArr[sortedArr.length - 1];
 
   for(let i = min; i < max; i++) {
-    if(statues.indexOf(i) === -1) {
+    if(!statues.includes(i)) {
       count++;
     }
   }
