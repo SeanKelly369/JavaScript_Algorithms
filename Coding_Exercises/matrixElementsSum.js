@@ -5,7 +5,7 @@ function matrixElementsSum(matrix) {
     for(let j = 0; j < matrix[i].length; j++) {
       if(matrix[i][j] === 0) {
         costMatrix.push(j);
-      } else if (costMatrix.indexOf(j) === -1) {
+      } else if (!costMatrix.includes(j)) {
           priceTotal += matrix[i][j];
       }
     }
