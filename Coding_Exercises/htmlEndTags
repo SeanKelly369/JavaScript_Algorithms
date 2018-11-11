@@ -1,0 +1,31 @@
+// My solution using JavaScript
+function htmlEndTagByStartTag(startTag) {
+  let tag = '';
+  for(let i = 0; i < startTag.length; i++) {
+    if(startTag[i].match(/\s|>/)) {
+      tag = startTag.slice(1, i);
+      break;
+    }
+  }
+  const fullStr = `${startTag}</${tag}>`;
+  return fullStr;
+}
+htmlEndTagByStartTag("<button type='button disabled>");
+//htmlEndTagByStartTag("<i>");
+
+// Dylan Israel solution in TypeScript
+// function htmlEndTagByStartTag2(startTag) {
+//   const splitString = startTag.split(' ');
+//   const splitTag = splitString[0].toString().split('');
+
+//   let endTag = '</';
+
+//   for(let i = 1; i < splitTag.length; i++) {
+//     endTag += splitTag[i];
+//   }
+//   endTag = endTag[endTag.length - 1] === '>' ? endTag : endTag += '>';
+
+//   return endTag;
+// }
+//htmlEndTagByStartTag2("<button type='button disabled>");
+//htmlEndTagByStartTag2("<i>");
