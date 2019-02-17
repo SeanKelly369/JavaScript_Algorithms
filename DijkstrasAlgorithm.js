@@ -32,6 +32,7 @@ class WeightedGraph {
     const nodes = new PriorityQueue();
     const distances = {};
     const previous = {};
+    let path = []; // to return at end
     let smallest;
     // build up initial state
     for(let vertex in this.adjacencyList) {
@@ -50,6 +51,13 @@ class WeightedGraph {
       // console.log("smallest is " + smallest);
       if(smallest === finish){
         // We are done
+        // build up path to return at end
+        while(previous[smallest]){
+          path.push(smallest);
+          smallest = previous[smallest];
+        } 
+        break;
+        console.log(smallest);
       }
       if(smallest || distances[smallest] !== Infinity){
         for(let neighbour in  this.adjacencyList[smallest]) {
@@ -57,11 +65,23 @@ class WeightedGraph {
           let nextNode = this.adjacencyList[smallest][neighbour];
           console.log(nextNode);
           // console.log(this.adjacencyList);
-          let candidate = distance[smallest] + nextNode.weight;
+          let candidate = distances[smallest] + nextNode.weight;
+          let nextNeighbour = nextNode.node;
+          if(candidate < distances[nextNeighbour]){
+
+            // Updating new smallest distance to neighbour
+            distances[nextNeighbour] = candidate;
+
+            // Updating previous - How we got to neighbour
+            previous[nextNeighbour] = smallest;
+
+            // Enqueue in priority queue with new priority
+            nodes.enqueue(nextNeighbour, candidate);
+          }
         }
       }
     }
-    console.log(distances);
+    return path.concat(smallest).reverse();
   }
 }
 
@@ -82,4 +102,4 @@ graph.addEdge("D","E", 3);
 graph.addEdge("D","F", 1);
 graph.addEdge("E","F", 1);
 
-console.log(graph.Dijkstra("A", "E"));
+graph.Dijkstra("A", "F");
