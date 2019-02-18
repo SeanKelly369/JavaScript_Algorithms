@@ -23,24 +23,26 @@ class WeightedGraph {
   addVertex(vertex) {
     if(!this.adjacencyList[vertex]) this.adjacencyList[vertex] = []; 
   }
+  // Link up vertices(nodes) with a weight to create an edge
   addEdge(vertex1, vertex2, weight) {
     this.adjacencyList[vertex1].push({node:vertex2, weight});
     this.adjacencyList[vertex2].push({node:vertex1, weight});
   }
 
   Dijkstra(start, finish) {
-    const nodes = new PriorityQueue();
+    const nodes = new PriorityQueue(); // The priority queue in this example is quite slow
     const distances = {};
     const previous = {};
     let path = []; // to return at end
     let smallest;
     // build up initial state
     for(let vertex in this.adjacencyList) {
+      // if node is at the beginning the distance is 0
       if(vertex === start){
           distances[vertex] = 0;
           nodes.enqueue(vertex, 0);
       } else {
-          distances[vertex] = Infinity;
+          distances[vertex] = Infinity; // initially set other distances to infinity
           nodes.enqueue(vertex, Infinity);
       }
       previous[vertex] = null;
@@ -92,6 +94,7 @@ graph.addVertex("C");
 graph.addVertex("D");
 graph.addVertex("E");
 graph.addVertex("F");
+graph.addVertex("Hello world");
 
 graph.addEdge("A","B", 4);
 graph.addEdge("A","C", 2);
@@ -101,5 +104,6 @@ graph.addEdge("C","F", 4);
 graph.addEdge("D","E", 3);
 graph.addEdge("D","F", 1);
 graph.addEdge("E","F", 1);
+graph.addEdge("Hello world", "D", 8);
 
-graph.Dijkstra("A", "F");
+graph.Dijkstra("A", "Hello world");
