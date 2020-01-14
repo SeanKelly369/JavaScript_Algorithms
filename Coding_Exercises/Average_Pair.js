@@ -3,7 +3,7 @@ function averagePair(arr, num){
   let end = arr.length-1;
   while(start < end){
 
-    //divide the start and end in half to find the average
+    //divide the start and end in half to find the center
     let avg = (arr[start] + arr[end]) / 2;
 
     // If average matches num return true
